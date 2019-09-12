@@ -17,6 +17,8 @@ server <- function(input, output, session) {
       addPolygons(color = 'gray', weight = .1, highlightOptions = highlightOptions(weight = 2), layerId = ~FORMAL_EN)
   })
   
+  output$text <- renderText('Click a country')
+  
   observeEvent(input$map_shape_click, {
     output$text <- renderText({
       input$map_shape_click$id
