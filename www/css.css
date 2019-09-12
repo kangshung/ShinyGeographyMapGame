@@ -1,0 +1,13 @@
+.country_name {
+	position: absolute;
+	width: 50%;
+	top: 2.5%;
+	left: 0;
+	right: 0;
+	background: #b0ccdd;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Calibri;
+	font-size: 25px;
+}
