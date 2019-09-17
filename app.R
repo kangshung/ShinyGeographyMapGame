@@ -1,5 +1,9 @@
 if(!require('pacman')) install.packages('pacman')
-pacman::p_load(shiny, leaflet, sf)
+# pacman::p_load(shiny, leaflet, sf, jsonlite)
+library(shiny); library(leaflet); library(sf); library(jsonlite)
+
+continents <- fromJSON('https://pkgstore.datahub.io/JohnSnowLabs/country-and-continent-codes-list/country-and-continent-codes-list-csv_json/data/c218eebbf2f8545f3db9051ac893d69c/country-and-continent-codes-list-csv_json.json')
+dplyr::left_join(read_sf('ne_10m_admin_0_countries'), continents, c(''))
 
 ui <- bootstrapPage(theme = 'css.css',
   leafletOutput('map', height = '100vh'),
@@ -8,7 +12,7 @@ ui <- bootstrapPage(theme = 'css.css',
 
 server <- function(input, output, session) {
   select_sf <- reactive({
-    read_sf('ne_50m_admin_0_countries')
+    read_sf('ne_10m_admin_0_countries')
   })
   
   output$map <- renderLeaflet({
