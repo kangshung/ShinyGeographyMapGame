@@ -1,6 +1,7 @@
 function(input, output, session) {
   output$map <- renderLeaflet({
-    leaflet(st_as_sf(world), options = leafletOptions(2, 5)) %>%
+    leaflet(st_transform(world, 4326),
+            options = leafletOptions(2, 5, crs = leafletCRS("L.CRS.EPSG4326"))) %>%
       setView(0, 50, zoom = 4) %>%
       addPolygons(
         fillColor = 'gray',
